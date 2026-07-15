@@ -22,6 +22,10 @@ Ideal para acompanhar o estado do serviço, visualizar contexto operacional e va
 
 ## Endpoint de busca de capa e contexto
 
+```bash
+curl "https://api.twj.es/search.php?query=Ministério%20Vineyard%20-%20Tu%20És%20Bom"
+```
+
 Para enriquecimento de capa, álbum e contexto visual da música, o serviço também pode ser usado com busca de informações complementares, permitindo montar experiências mais ricas em players e interfaces.
 
 O resultado retorna dois blocos principais:
