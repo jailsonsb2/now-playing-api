@@ -82,6 +82,34 @@ h1 {
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 1rem;
 }
+.endpoint-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+.section-title {
+  font-size: clamp(1.5rem, 2vw, 2rem);
+  margin-bottom: 1rem;
+}
+.feature-list,
+.link-list {
+  display: grid;
+  gap: 0.85rem;
+}
+.feature-list li,
+.link-list li {
+  padding: 1rem;
+  border-radius: 1rem;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.note {
+  background: rgba(87, 213, 255, 0.12);
+  border-left: 4px solid rgba(87, 213, 255, 0.9);
+  padding: 1rem 1rem 1rem 1.1rem;
+  color: #d6f7ff;
+  margin-top: 1rem;
+}
 pre, code {
   font-family: "Cascadia Code", Consolas, Monaco, monospace;
 }

@@ -1,39 +1,36 @@
 # Now Playing API
 
-API de metadata para rádios web que transforma qualquer stream em JSON rico com a música atual, artista, álbum, capa, histórico e identificador do clipe no YouTube.
+API de metadata hospedada para rádios web, com consumo via endpoint público e documentação voltada para integração rápida em players, painéis e aplicações.
 
-Este repositório funciona como documentação pública de um serviço voltado para quem precisa de dados de rádio em tempo real com qualidade, confiabilidade e integração simples em aplicações web, players e painéis.
+## Visão geral
 
-## Endpoint principal de metadados
+- Endpoint hospedado: `https://api.twj.es`
+- Suporte a streams Icecast, Shoutcast, Zeno.FM e outras rádios web
+- Retorna metadados em tempo real, capa, histórico e contexto visual
+- `search.php` disponível para busca de capa, álbum e correspondência de faixas
+
+## Endpoints públicos
+
+### Metadata agora tocando
 
 ```bash
 curl "https://api.twj.es/?url=https://stream.zeno.fm/yn65fsaurfhvv"
 ```
 
-Retorna o estado atual da reprodução com metadados completos da faixa em execução.
+Retorna o estado atual da reprodução, com dados da faixa em execução.
 
-## Dashboard e observabilidade
-
-A experiência também conta com um painel público em:
-
-- https://twj.es/dashboard
-
-Ideal para acompanhar o estado do serviço, visualizar contexto operacional e validar o fluxo de uso em tempo real.
-
-## Endpoint de busca de capa e contexto
+### Busca de capa e contexto
 
 ```bash
 curl "https://api.twj.es/search.php?query=Ministério%20Vineyard%20-%20Tu%20És%20Bom"
 ```
 
-Para enriquecimento de capa, álbum e contexto visual da música, o serviço também pode ser usado com busca de informações complementares, permitindo montar experiências mais ricas em players e interfaces.
+Use o parâmetro `query` com artista e título. A resposta traz:
 
-O resultado retorna dois blocos principais:
+- `results` — melhor correspondência encontrada
+- `other_matches` — alternativas relevantes ordenadas por similaridade
 
-- `results` — a melhor correspondência encontrada
-- `other_matches` — outras correspondências relevantes ordenadas por similaridade
-
-Os campos `artwork` e `stream_url` são retornados como URLs simples, não como markdown. Exemplo correto:
+Os campos `artwork` e `stream_url` são URLs diretas, não markdown.
 
 ```json
 "artwork": "https://i.scdn.co/image/ab67616d0000b273f7180d5f9061ef30de929f7e",
@@ -60,38 +57,55 @@ Os campos `artwork` e `stream_url` são retornados como URLs simples, não como 
 }
 ```
 
-## O que a API entrega
+## O que entra e o que sai
 
-- `songtitle`, `artist`, `song`
-- `album`, `year`, `albumArt`
-- `streamUrl`
-- `youtubeId`
-- `now_playing` com `elapsed`, `remaining` e `duration`
-- `song_history`
+- Entrada: `url` do stream de rádio
+- Saída: metadados estruturados com `songtitle`, `artist`, `song`, `album`, `albumArt`, `streamUrl`, `youtubeId`, `now_playing`, `song_history`
+- Busca adicional: `search.php` para capa, álbum e dados de contexto
 
-## Como funciona
+## Como usar
 
-A API recebe a URL de um stream de rádio, lê os metadados ICY e devolve um payload estruturado para players, aplicações web, integração de frontends e experiência de usuário em tempo real com alto nível de utilidade para quem consome o serviço.
+### Exemplo em JavaScript
+
+```js
+const streamUrl = 'https://stream.zeno.fm/yn65fsaurfhvv';
+const response = await fetch(`https://api.twj.es/?url=${encodeURIComponent(streamUrl)}`);
+const payload = await response.json();
+console.log(payload);
+```
+
+### Exemplo em shell
+
+```bash
+curl "https://api.twj.es/?url=https://stream.zeno.fm/yn65fsaurfhvv"
+```
+
+## Observabilidade e dashboard
+
+Painel público:
+
+- https://twj.es/dashboard
+
+Use-o para verificar o estado do serviço, testar endpoints e acompanhar métricas de operação.
 
 ## Casos de uso
 
-- players de rádio web
-- dashboards de programação
-- widgets de música em tempo real
-- integração com aplicações de entretenimento
-- experiências com clipe sincronizado
-- interfaces com capa, álbum e contexto visual enriquecido
+- players de rádio web modernos
+- widgets de programação ao vivo
+- dashboards de emissoras
+- experiências com capa, histórico e clipe de vídeo
+- integrações em painéis e aplicativos de entretenimento
 
 ## Documentação pública
 
-A landing page com exemplo e testador ao vivo está em:
+A landing page oficial está em:
 
 - [docs/index.html](docs/index.html)
 
 ## Nota importante
 
-Este repositório não publica a implementação executável da API. O acesso ocorre exclusivamente por meio dos endpoints públicos disponíveis para consumo, com foco em documentação, visibilidade e uso prático.
+Este repositório não publica a implementação executável da API. Ele documenta apenas o serviço hospedado e os endpoints públicos para consumo.
 
 ## Palavras-chave
 
-now playing api, api para radio, metadata api, radio web, icecast, shoutcast, api de música em tempo real, busca de capa, endpoint de metadados
+now playing api, api para radio, metadata api, radio web, icecast, shoutcast, zeno.fm, api de música em tempo real, busca de capa, endpoint de metadados

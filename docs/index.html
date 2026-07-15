@@ -3,24 +3,24 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Now Playing API | documentação pública</title>
+    <title>Now Playing API — Documentação pública do endpoint hospedado</title>
     <meta
       name="description"
-      content="Documentação pública da API Now Playing para rádios web. Consulte o endpoint hospedado em OCI, veja exemplos e teste a resposta em tempo real."
+      content="Documentação pública da Now Playing API para rádios web. Consulte o endpoint hospedado, veja exemplos de uso e teste a resposta em tempo real."
     />
     <meta
       name="keywords"
-      content="now playing api, api para radio, metadata api, radio web, icecast, shoutcast, api de música em tempo real"
+      content="now playing api, api para radio, metadata api, radio web, icecast, shoutcast, zeno.fm, endpoint de metadados"
     />
     <meta name="robots" content="index,follow" />
     <meta name="theme-color" content="#07111f" />
     <link rel="canonical" href="https://jailsonsb2.github.io/now-playing-api/" />
     <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
     <link rel="manifest" href="./manifest.webmanifest" />
-    <meta property="og:title" content="Now Playing API | API de metadata para rádios web" />
+    <meta property="og:title" content="Now Playing API — Documentação pública do endpoint hospedado" />
     <meta
       property="og:description"
-      content="API de metadata para rádios web, consumida via endpoint hospedado em OCI. Veja exemplos e teste a resposta em tempo real."
+      content="Consuma o endpoint hospedado da Now Playing API para rádios web e metadados em tempo real."
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://jailsonsb2.github.io/now-playing-api/" />
@@ -32,58 +32,98 @@
       name="twitter:description"
       content="Documentação pública da API Now Playing para consumo via endpoint hospedado."
     />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Now Playing API",
+        "url": "https://jailsonsb2.github.io/now-playing-api/",
+        "description": "Documentação pública da Now Playing API para rádios web, com exemplos e testador ao vivo.",
+        "publisher": {
+          "@type": "Organization",
+          "name": "jailsonsb2"
+        }
+      }
+    </script>
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
     <header class="hero">
       <div class="container">
-        <p class="eyebrow">Documentação • consumo via endpoint • OCI</p>
+        <p class="eyebrow">API de metadata • endpoint hospedado • docs públicas</p>
         <h1>Now Playing API</h1>
         <p class="lead">
-          Esta página documenta a API Now Playing para rádios web, voltada para quem precisa de metadados de música em tempo real com qualidade, confiabilidade e integração simples em players, painéis e aplicações web.
+          Consuma metadados em tempo real para rádios web com capa, histórico, contexto visual e busca de faixas — tudo via endpoint público. Sem código da API publicado neste repositório.
         </p>
         <div class="actions">
-          <a class="btn btn-primary" href="#tester">Testar o endpoint</a>
-          <a class="btn btn-secondary" href="https://api.twj.es/?url=https%3A%2F%2Fstream.zeno.fm%2Fyn65fsaurfhvv">Abrir exemplo</a>
+          <a class="btn btn-primary" href="#tester">Testar agora</a>
+          <a class="btn btn-secondary" href="https://api.twj.es/?url=https%3A%2F%2Fstream.zeno.fm%2Fyn65fsaurfhvv">Ver exemplo</a>
         </div>
       </div>
     </header>
 
     <main class="container">
       <section class="card" id="overview">
-        <h2>O que a API entrega</h2>
+        <h2 class="section-title">O que a API entrega</h2>
         <div class="grid">
           <article>
-            <h3>Metadados em tempo real</h3>
-            <p>Receba o título, artista, álbum, capa e duração atual da música em execução para enriquecer qualquer experiência de rádio.</p>
+            <h3>Now playing</h3>
+            <p>Receba a música atual com artista, álbum, capa, duração e identificador de vídeo.</p>
           </article>
           <article>
-            <h3>Histórico de faixas</h3>
-            <p>Monte cards de reprodução recente com os mesmos dados usados por players e painéis modernos.</p>
+            <h3>Histórico</h3>
+            <p>Mostre as últimas faixas tocadas no player ou painel, com dados consistentes.</p>
           </article>
           <article>
-            <h3>Busca de capa e contexto</h3>
-            <p>Use os endpoints de metadata e contexto para trazer capa, álbum e informações visuais de forma consistente.</p>
+            <h3>Busca de contexto</h3>
+            <p>Busque capa e álbum por artista e título usando `search.php`.</p>
           </article>
         </div>
       </section>
 
-      <section class="card" id="endpoint">
-        <h2>Endpoints públicos</h2>
-        <pre><code>GET https://api.twj.es/?url=https://stream.zeno.fm/yn65fsaurfhvv</code></pre>
-        <p>Endpoint principal de metadados para a faixa em reprodução.</p>
-        <pre><code>GET https://api.twj.es/search.php?query=Ministério%20Vineyard%20-%20Tu%20És%20Bom</code></pre>
-        <p>Endpoint de busca de contexto e capa para enriquecer a experiência visual do player. Use o parâmetro `query` com o artista e o título.</p>
-        <p>O retorno inclui `results` para a melhor correspondência e `other_matches` para opções adicionais.</p>
-        <p>Os campos `artwork` e `stream_url` são URLs diretas, não markdown.</p>
-        <p>Dashboard público para observabilidade e acompanhamento do serviço: <a href="https://twj.es/dashboard" target="_blank" rel="noopener">https://twj.es/dashboard</a></p>
-        <p>Exemplo de resposta:</p>
+      <section class="card" id="endpoints">
+        <h2 class="section-title">Endpoints públicos</h2>
+        <div class="endpoint-grid">
+          <div>
+            <h3>Metadata em tempo real</h3>
+            <pre><code>GET https://api.twj.es/?url=https://stream.zeno.fm/yn65fsaurfhvv</code></pre>
+            <p>Retorna o estado da faixa atualmente em reprodução.</p>
+          </div>
+          <div>
+            <h3>Busca de capa e contexto</h3>
+            <pre><code>GET https://api.twj.es/search.php?query=Ministério%20Vineyard%20-%20Tu%20És%20Bom</code></pre>
+            <p>Use o parâmetro <code>query</code> com artista e título para obter capa, álbum e correspondências relevantes.</p>
+          </div>
+        </div>
+        <p class="note">O retorno inclui <code>results</code> como correspondência principal e <code>other_matches</code> como alternativas. Campos como <code>artwork</code> e <code>stream_url</code> são URLs diretas.</p>
+        <p>Dashboard público para observabilidade: <a href="https://twj.es/dashboard" target="_blank" rel="noopener">https://twj.es/dashboard</a></p>
+      </section>
+
+      <section class="card" id="integration">
+        <h2 class="section-title">Como usar</h2>
+        <div class="grid">
+          <article>
+            <h3>Exemplo Shell</h3>
+            <pre><code>curl "https://api.twj.es/?url=https://stream.zeno.fm/yn65fsaurfhvv"</code></pre>
+          </article>
+          <article>
+            <h3>Exemplo JavaScript</h3>
+            <pre><code>const response = await fetch('https://api.twj.es/?url=' + encodeURIComponent(streamUrl));
+const payload = await response.json();
+console.log(payload);</code></pre>
+          </article>
+        </div>
+      </section>
+
+      <section class="card" id="response">
+        <h2 class="section-title">Exemplo de resposta</h2>
         <pre><code>{
   "songtitle": "Fernandinho - Nada Além do Sangue",
   "artist": "Fernandinho",
   "song": "Nada Além do Sangue",
   "album": "Uma Nova História",
   "albumArt": "https://.../600x600bb.jpg",
+  "streamUrl": "https://music.apple.com/...",
   "youtubeId": "csPaNdL6ndA",
   "now_playing": { "elapsed": 124, "remaining": 137, "duration": 261 },
   "song_history": []
@@ -91,8 +131,8 @@
       </section>
 
       <section class="card" id="tester">
-        <h2>Testador ao vivo</h2>
-        <p>Use os endpoints públicos e teste a resposta diretamente no navegador.</p>
+        <h2 class="section-title">Testador ao vivo</h2>
+        <p>Teste diretamente no navegador com qualquer stream de rádio.</p>
         <form id="tester-form">
           <label>
             URL base da API
