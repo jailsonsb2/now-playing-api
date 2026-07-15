@@ -1,14 +1,10 @@
 # Now Playing API
 
-Este repositório é exclusivamente uma documentação pública da API Now Playing, hospedada em:
+API de metadata para rádios web que transforma qualquer stream em JSON rico com a música atual, artista, álbum, capa, histórico e identificador do clipe no YouTube.
 
-https://api.twj.es/?url=https%3A%2F%2Fstream.zeno.fm%2Fyn65fsaurfhvv
+Este repositório funciona como documentação pública do serviço hospedado em OCI, com foco em visibilidade, SEO, exemplos de uso e consumo da API.
 
-A API é disponibilizada para consumo e não possui o código-fonte publicado aqui. O objetivo deste repositório é explicar como o serviço funciona, mostrar exemplos de uso e dar visibilidade ao trabalho.
-
-## Como consumir
-
-Faça uma requisição GET para o endpoint hospedado:
+## Endpoint público
 
 ```bash
 curl "https://api.twj.es/?url=https://stream.zeno.fm/yn65fsaurfhvv"
@@ -45,7 +41,15 @@ curl "https://api.twj.es/?url=https://stream.zeno.fm/yn65fsaurfhvv"
 
 ## Como funciona
 
-A API recebe a URL de um stream de rádio, lê os metadados ICY do fluxo e devolve um JSON rico para players, aplicações web e integrações.
+A API recebe a URL de um stream de rádio, lê os metadados ICY e devolve um payload estruturado para players, aplicações web, integração de frontends e experiência de usuário em tempo real.
+
+## Casos de uso
+
+- players de rádio web
+- dashboards de programação
+- widgets de música em tempo real
+- integração com aplicações de entretenimento
+- experiências com clipe sincronizado
 
 ## Documentação pública
 
@@ -55,4 +59,8 @@ A landing page com exemplo e testador ao vivo está em:
 
 ## Nota importante
 
-Este repositório não publica a implementação executável da API. O acesso ocorre exclusivamente pelo endpoint hospedado em OCI.
+Este repositório não publica a implementação executável da API. O acesso ocorre exclusivamente pelo endpoint hospedado em OCI, com foco em consumo, visibilidade e documentação pública.
+
+## Palavras-chave
+
+now playing api, api para radio, metadata api, radio web, icecast, shoutcast, api de música em tempo real
