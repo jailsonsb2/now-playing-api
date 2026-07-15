@@ -40,7 +40,7 @@
         <p class="eyebrow">Documentação • consumo via endpoint • OCI</p>
         <h1>Now Playing API</h1>
         <p class="lead">
-          Esta página documenta a API Now Playing para rádios web, hospedada em OCI. O objetivo é explicar o funcionamento do serviço, mostrar exemplos de uso e dar visibilidade ao trabalho, sem publicar o código executável.
+          Esta página documenta a API Now Playing para rádios web, voltada para quem precisa de metadados de música em tempo real com qualidade, confiabilidade e integração simples em players, painéis e aplicações web.
         </p>
         <div class="actions">
           <a class="btn btn-primary" href="#tester">Testar o endpoint</a>
@@ -55,22 +55,25 @@
         <div class="grid">
           <article>
             <h3>Metadados em tempo real</h3>
-            <p>Receba o título, artista, álbum, capa e duração atual da música em execução.</p>
+            <p>Receba o título, artista, álbum, capa e duração atual da música em execução para enriquecer qualquer experiência de rádio.</p>
           </article>
           <article>
             <h3>Histórico de faixas</h3>
-            <p>Monte cards de reprodução recente com os mesmos dados usados por players.</p>
+            <p>Monte cards de reprodução recente com os mesmos dados usados por players e painéis modernos.</p>
           </article>
           <article>
-            <h3>Clip mode</h3>
-            <p>O campo <code>youtubeId</code> permite vincular o vídeo oficial da música ao player.</p>
+            <h3>Busca de capa e contexto</h3>
+            <p>Use os endpoints de metadata e contexto para trazer capa, álbum e informações visuais de forma consistente.</p>
           </article>
         </div>
       </section>
 
       <section class="card" id="endpoint">
-        <h2>Endpoint público</h2>
+        <h2>Endpoints públicos</h2>
         <pre><code>GET https://api.twj.es/?url=https://stream.zeno.fm/yn65fsaurfhvv</code></pre>
+        <p>Endpoint principal de metadados para a faixa em reprodução.</p>
+        <pre><code>GET https://api.twj.es/search?...</code></pre>
+        <p>Endpoint de busca de contexto e capa para enriquecer a experiência visual do player.</p>
         <p>Exemplo de resposta:</p>
         <pre><code>{
   "songtitle": "Fernandinho - Nada Além do Sangue",
@@ -86,7 +89,7 @@
 
       <section class="card" id="tester">
         <h2>Testador ao vivo</h2>
-        <p>Use o endpoint hospedado em OCI e teste a resposta diretamente no navegador.</p>
+        <p>Use os endpoints públicos e teste a resposta diretamente no navegador.</p>
         <form id="tester-form">
           <label>
             URL base da API

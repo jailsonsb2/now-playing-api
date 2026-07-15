@@ -2,13 +2,19 @@
 
 API de metadata para rádios web que transforma qualquer stream em JSON rico com a música atual, artista, álbum, capa, histórico e identificador do clipe no YouTube.
 
-Este repositório funciona como documentação pública do serviço hospedado em OCI, com foco em visibilidade, SEO, exemplos de uso e consumo da API.
+Este repositório funciona como documentação pública de um serviço voltado para quem precisa de dados de rádio em tempo real com qualidade, confiabilidade e integração simples em aplicações web, players e painéis.
 
-## Endpoint público
+## Endpoint principal de metadados
 
 ```bash
 curl "https://api.twj.es/?url=https://stream.zeno.fm/yn65fsaurfhvv"
 ```
+
+Retorna o estado atual da reprodução com metadados completos da faixa em execução.
+
+## Endpoint de busca de capa e contexto
+
+Para enriquecimento de capa, álbum e contexto visual da música, o serviço também pode ser usado com busca de informações complementares, permitindo montar experiências mais ricas em players e interfaces.
 
 ## Exemplo de resposta
 
@@ -41,7 +47,7 @@ curl "https://api.twj.es/?url=https://stream.zeno.fm/yn65fsaurfhvv"
 
 ## Como funciona
 
-A API recebe a URL de um stream de rádio, lê os metadados ICY e devolve um payload estruturado para players, aplicações web, integração de frontends e experiência de usuário em tempo real.
+A API recebe a URL de um stream de rádio, lê os metadados ICY e devolve um payload estruturado para players, aplicações web, integração de frontends e experiência de usuário em tempo real com alto nível de utilidade para quem consome o serviço.
 
 ## Casos de uso
 
@@ -50,6 +56,7 @@ A API recebe a URL de um stream de rádio, lê os metadados ICY e devolve um pay
 - widgets de música em tempo real
 - integração com aplicações de entretenimento
 - experiências com clipe sincronizado
+- interfaces com capa, álbum e contexto visual enriquecido
 
 ## Documentação pública
 
@@ -59,8 +66,8 @@ A landing page com exemplo e testador ao vivo está em:
 
 ## Nota importante
 
-Este repositório não publica a implementação executável da API. O acesso ocorre exclusivamente pelo endpoint hospedado em OCI, com foco em consumo, visibilidade e documentação pública.
+Este repositório não publica a implementação executável da API. O acesso ocorre exclusivamente por meio dos endpoints públicos disponíveis para consumo, com foco em documentação, visibilidade e uso prático.
 
 ## Palavras-chave
 
-now playing api, api para radio, metadata api, radio web, icecast, shoutcast, api de música em tempo real
+now playing api, api para radio, metadata api, radio web, icecast, shoutcast, api de música em tempo real, busca de capa, endpoint de metadados
