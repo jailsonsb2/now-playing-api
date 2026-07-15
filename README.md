@@ -12,6 +12,14 @@ curl "https://api.twj.es/?url=https://stream.zeno.fm/yn65fsaurfhvv"
 
 Retorna o estado atual da reprodução com metadados completos da faixa em execução.
 
+## Dashboard e observabilidade
+
+A experiência também conta com um painel público em:
+
+- https://twj.es/dashboard
+
+Ideal para acompanhar o estado do serviço, visualizar contexto operacional e validar o fluxo de uso em tempo real.
+
 ## Endpoint de busca de capa e contexto
 
 Para enriquecimento de capa, álbum e contexto visual da música, o serviço também pode ser usado com busca de informações complementares, permitindo montar experiências mais ricas em players e interfaces.
