@@ -24,6 +24,18 @@ Ideal para acompanhar o estado do serviço, visualizar contexto operacional e va
 
 Para enriquecimento de capa, álbum e contexto visual da música, o serviço também pode ser usado com busca de informações complementares, permitindo montar experiências mais ricas em players e interfaces.
 
+O resultado retorna dois blocos principais:
+
+- `results` — a melhor correspondência encontrada
+- `other_matches` — outras correspondências relevantes ordenadas por similaridade
+
+Os campos `artwork` e `stream_url` são retornados como URLs simples, não como markdown. Exemplo correto:
+
+```json
+"artwork": "https://i.scdn.co/image/ab67616d0000b273f7180d5f9061ef30de929f7e",
+"stream_url": "https://open.spotify.com/track/05FaR9FTuCSEpiPqU6f1A2"
+```
+
 ## Exemplo de resposta
 
 ```json

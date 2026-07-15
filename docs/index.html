@@ -72,8 +72,10 @@
         <h2>Endpoints públicos</h2>
         <pre><code>GET https://api.twj.es/?url=https://stream.zeno.fm/yn65fsaurfhvv</code></pre>
         <p>Endpoint principal de metadados para a faixa em reprodução.</p>
-        <pre><code>GET https://api.twj.es/search?...</code></pre>
+        <pre><code>GET https://api.twj.es/search.php?query=Ministério%20Vineyard%20-%20Tu%20És%20Bom</code></pre>
         <p>Endpoint de busca de contexto e capa para enriquecer a experiência visual do player.</p>
+        <p>O retorno inclui `results` para a melhor correspondência e `other_matches` para opções adicionais.</p>
+        <p>Os campos `artwork` e `stream_url` são URLs diretas, não markdown.</p>
         <p>Dashboard público para observabilidade e acompanhamento do serviço: <a href="https://twj.es/dashboard" target="_blank" rel="noopener">https://twj.es/dashboard</a></p>
         <p>Exemplo de resposta:</p>
         <pre><code>{
