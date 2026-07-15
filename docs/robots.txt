@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://jailsonsb2.github.io/now-playing-api/sitemap.xml

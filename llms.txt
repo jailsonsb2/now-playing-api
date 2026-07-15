@@ -1,0 +1,15 @@
+# Now Playing API for Web Radios
+
+> Documentation-only repository for the hosted Now Playing API service. The public endpoint is available at https://api.twj.es/?url=https%3A%2F%2Fstream.zeno.fm%2Fyn65fsaurfhvv and returns now-playing metadata for web radios. This repository does not publish the executable implementation.
+
+## Docs
+- [README](https://github.com/jailsonsb2/now-playing-api#readme): endpoint, response format, and usage examples
+- [Docs site](https://jailsonsb2.github.io/now-playing-api/): public landing page and live tester
+
+## Consumption
+- Endpoint: https://api.twj.es/?url=STREAM_URL
+- Response fields: songtitle, artist, song, album, albumArt, streamUrl, youtubeId, now_playing, song_history
+
+## Notes
+- This repository is for documentation, visibility, and education.
+- The service is consumed through the hosted endpoint rather than through published source code.

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Now Playing API | documentação pública</title>
+    <meta
+      name="description"
+      content="Documentação pública da API Now Playing hospedada em OCI. Veja como consumir o endpoint e entender o funcionamento do serviço."
+    />
+    <meta
+      name="keywords"
+      content="now playing api, api radio, metadata api, radio web, icecast, shoutcast"
+    />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="https://jailsonsb2.github.io/now-playing-api/" />
+    <meta property="og:title" content="Now Playing API" />
+    <meta
+      property="og:description"
+      content="API de metadata para rádios web, consumida via endpoint hospedado em OCI."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://jailsonsb2.github.io/now-playing-api/" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Now Playing API" />
+    <meta
+      name="twitter:description"
+      content="Documentação pública da API Now Playing para consumo via endpoint hospedado."
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <div class="container">
+        <p class="eyebrow">Documentação • consumo via endpoint • OCI</p>
+        <h1>Now Playing API</h1>
+        <p class="lead">
+          Esta página documenta a API hospedada em OCI. O objetivo é explicar o funcionamento do serviço, mostrar exemplos de uso e dar visibilidade ao trabalho, sem publicar o código executável.
+        </p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#tester">Testar o endpoint</a>
+          <a class="btn btn-secondary" href="https://api.twj.es/?url=https%3A%2F%2Fstream.zeno.fm%2Fyn65fsaurfhvv">Abrir exemplo</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="card" id="overview">
+        <h2>O que a API entrega</h2>
+        <div class="grid">
+          <article>
+            <h3>Metadados em tempo real</h3>
+            <p>Receba o título, artista, álbum, capa e duração atual da música em execução.</p>
+          </article>
+          <article>
+            <h3>Histórico de faixas</h3>
+            <p>Monte cards de reprodução recente com os mesmos dados usados por players.</p>
+          </article>
+          <article>
+            <h3>Clip mode</h3>
+            <p>O campo <code>youtubeId</code> permite vincular o vídeo oficial da música ao player.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="card" id="endpoint">
+        <h2>Endpoint público</h2>
+        <pre><code>GET https://api.twj.es/?url=https://stream.zeno.fm/yn65fsaurfhvv</code></pre>
+        <p>Exemplo de resposta:</p>
+        <pre><code>{
+  "songtitle": "Fernandinho - Nada Além do Sangue",
+  "artist": "Fernandinho",
+  "song": "Nada Além do Sangue",
+  "album": "Uma Nova História",
+  "albumArt": "https://.../600x600bb.jpg",
+  "youtubeId": "csPaNdL6ndA",
+  "now_playing": { "elapsed": 124, "remaining": 137, "duration": 261 },
+  "song_history": []
+}</code></pre>
+      </section>
+
+      <section class="card" id="tester">
+        <h2>Testador ao vivo</h2>
+        <p>Use o endpoint hospedado em OCI e teste a resposta diretamente no navegador.</p>
+        <form id="tester-form">
+          <label>
+            URL base da API
+            <input id="api-base-url" type="url" value="https://api.twj.es" placeholder="https://api.twj.es" />
+          </label>
+          <label>
+            URL do stream
+            <input id="stream-url" type="url" placeholder="https://stream.example.com/radio" />
+          </label>
+          <div class="actions compact">
+            <button class="btn btn-primary" type="submit">Executar</button>
+            <button class="btn btn-secondary" type="button" id="copy-json">Copiar JSON</button>
+          </div>
+        </form>
+        <div id="status" class="status">Aguardando request…</div>
+        <pre id="response-output" class="output">{}</pre>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <p>Now Playing API — documentação pública para consumo do serviço hospedado.</p>
+      </div>
+    </footer>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
