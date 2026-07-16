@@ -11,7 +11,7 @@
 - Response fields: songtitle, artist, song, album, albumArt, streamUrl, youtubeId, now_playing, song_history
 
 ## Service behavior (important for integrations)
-- First request for a radio returns "Carregando..." — keep polling, real data arrives within seconds.
+- First request for a radio returns "Carregando..." with "loading": true — it is a state, not a song (do not look up cover art or lyrics for it); keep polling, real data arrives within seconds.
 - Enrichment is asynchronous: albumArt and youtubeId may appear one or two polls later; compare songtitle AND enrichment fields to detect updates.
 - ICY is law: artist/song are always what the radio broadcast — enrichment never renames the track.
 - Responses have a 5s shared cache and support ETag/If-None-Match; poll every 10 seconds per listener.

@@ -287,7 +287,7 @@ console.log(payload);</code></pre>
         <div class="lang-block lang-pt" lang="pt-BR">
           <h2 class="section-title">Comportamento do serviço (leia antes de integrar)</h2>
           <ul>
-            <li><strong>Primeira consulta de uma rádio</strong> retorna <code>"Carregando..."</code> — a API começa a monitorar o stream naquele momento; continue o polling e os dados reais chegam em segundos.</li>
+            <li><strong>Primeira consulta de uma rádio</strong> retorna <code>"Carregando..."</code> com <code>"loading": true</code> — é um estado, não uma música (não busque capa/letra dele); a API começa a monitorar o stream naquele momento e os dados reais chegam em segundos.</li>
             <li><strong>Enriquecimento assíncrono:</strong> o nome cru da música é publicado na hora; <code>albumArt</code> e <code>youtubeId</code> podem aparecer um ou dois polls depois. Para detectar atualizações, compare o <code>songtitle</code> <em>e</em> os campos de enriquecimento.</li>
             <li><strong>O ICY é lei:</strong> <code>artist</code>/<code>song</code> são sempre o que a rádio transmitiu. As fontes de enriquecimento adicionam capa, álbum, ano, duração e links — nunca renomeiam a faixa.</li>
             <li><strong>Cache e ETag:</strong> respostas têm cache compartilhado de 5s e suportam <code>If-None-Match</code> (um <code>304</code> gratuito). Faça polling a cada <strong>10 segundos</strong> por ouvinte — mais rápido que isso não traz dado novo.</li>
@@ -298,7 +298,7 @@ console.log(payload);</code></pre>
         <div class="lang-block lang-en hidden" lang="en">
           <h2 class="section-title">Service behavior (read before integrating)</h2>
           <ul>
-            <li><strong>First request for a radio</strong> returns <code>"Carregando..."</code> — the API starts monitoring that stream right then; keep polling and real data arrives within seconds.</li>
+            <li><strong>First request for a radio</strong> returns <code>"Carregando..."</code> with <code>"loading": true</code> — it is a state, not a song (do not look up cover/lyrics for it); the API starts monitoring that stream right then and real data arrives within seconds.</li>
             <li><strong>Asynchronous enrichment:</strong> the raw song name is published instantly; <code>albumArt</code> and <code>youtubeId</code> may appear one or two polls later. To detect updates, compare <code>songtitle</code> <em>and</em> the enrichment fields.</li>
             <li><strong>ICY is law:</strong> <code>artist</code>/<code>song</code> are always what the radio broadcast. Enrichment sources add cover, album, year, duration and links — they never rename the track.</li>
             <li><strong>Cache and ETag:</strong> responses have a 5s shared cache and support <code>If-None-Match</code> (a free <code>304</code>). Poll every <strong>10 seconds</strong> per listener — faster brings no new data.</li>
@@ -309,7 +309,7 @@ console.log(payload);</code></pre>
         <div class="lang-block lang-es hidden" lang="es">
           <h2 class="section-title">Comportamiento del servicio (lee antes de integrar)</h2>
           <ul>
-            <li><strong>La primera consulta de una radio</strong> devuelve <code>"Carregando..."</code> — la API empieza a monitorear el stream en ese momento; sigue consultando y los datos reales llegan en segundos.</li>
+            <li><strong>La primera consulta de una radio</strong> devuelve <code>"Carregando..."</code> con <code>"loading": true</code> — es un estado, no una canción (no busques portada/letra de él); la API empieza a monitorear el stream en ese momento y los datos reales llegan en segundos.</li>
             <li><strong>Enriquecimiento asíncrono:</strong> el nombre crudo de la canción se publica al instante; <code>albumArt</code> y <code>youtubeId</code> pueden aparecer uno o dos sondeos después. Para detectar actualizaciones, compara <code>songtitle</code> <em>y</em> los campos de enriquecimiento.</li>
             <li><strong>El ICY es ley:</strong> <code>artist</code>/<code>song</code> son siempre lo que la radio transmitió. Las fuentes de enriquecimiento añaden portada, álbum, año, duración y enlaces — nunca renombran la pista.</li>
             <li><strong>Caché y ETag:</strong> las respuestas tienen caché compartida de 5s y soportan <code>If-None-Match</code> (un <code>304</code> gratuito). Consulta cada <strong>10 segundos</strong> por oyente — más rápido no trae datos nuevos.</li>

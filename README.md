@@ -64,7 +64,7 @@ Os campos `artwork` e `stream_url` são URLs diretas, não markdown.
 
 ### Comportamento do serviço (leia antes de integrar)
 
-- **Primeira consulta de uma rádio** retorna `"Carregando..."` — a API começa a monitorar o stream naquele momento; continue o polling e os dados reais chegam em segundos.
+- **Primeira consulta de uma rádio** retorna `"Carregando..."` com `"loading": true` — é um estado, não uma música (não busque capa/letra dele); continue o polling e os dados reais chegam em segundos.
 - **Enriquecimento assíncrono:** o nome cru da música é publicado na hora; `albumArt` e `youtubeId` podem aparecer um ou dois polls depois. Para detectar atualizações, compare o `songtitle` **e** os campos de enriquecimento.
 - **O ICY é lei:** `artist`/`song` são sempre o que a rádio transmitiu. O enriquecimento adiciona capa, álbum, ano, duração e links — nunca renomeia a faixa.
 - **Cache e ETag:** respostas têm cache compartilhado de 5s e suportam `If-None-Match` (`304` gratuito). Faça polling a cada **10 segundos** por ouvinte.
@@ -157,7 +157,7 @@ Fields like `artwork` and `stream_url` are direct URLs, not markdown.
 
 ### Service behavior (read before integrating)
 
-- **First request for a radio** returns `"Carregando..."` — the API starts monitoring that stream right then; keep polling and real data arrives within seconds.
+- **First request for a radio** returns `"Carregando..."` with `"loading": true` — it is a state, not a song (do not look up cover/lyrics for it); keep polling and real data arrives within seconds.
 - **Asynchronous enrichment:** the raw song name is published instantly; `albumArt` and `youtubeId` may appear one or two polls later. To detect updates, compare `songtitle` **and** the enrichment fields.
 - **ICY is law:** `artist`/`song` are always what the radio broadcast. Enrichment adds cover, album, year, duration and links — it never renames the track.
 - **Cache and ETag:** responses have a 5s shared cache and support `If-None-Match` (a free `304`). Poll every **10 seconds** per listener.
@@ -250,7 +250,7 @@ Campos como `artwork` y `stream_url` son URLs directas, no markdown.
 
 ### Comportamiento del servicio (lee antes de integrar)
 
-- **La primera consulta de una radio** devuelve `"Carregando..."` — la API empieza a monitorear el stream en ese momento; sigue consultando y los datos reales llegan en segundos.
+- **La primera consulta de una radio** devuelve `"Carregando..."` con `"loading": true` — es un estado, no una canción (no busques portada/letra de él); sigue consultando y los datos reales llegan en segundos.
 - **Enriquecimiento asíncrono:** el nombre crudo de la canción se publica al instante; `albumArt` y `youtubeId` pueden aparecer uno o dos sondeos después. Para detectar actualizaciones, compara `songtitle` **y** los campos de enriquecimiento.
 - **El ICY es ley:** `artist`/`song` son siempre lo que la radio transmitió. El enriquecimiento añade portada, álbum, año, duración y enlaces — nunca renombra la pista.
 - **Caché y ETag:** las respuestas tienen caché compartida de 5s y soportan `If-None-Match` (`304` gratuito). Consulta cada **10 segundos** por oyente.
