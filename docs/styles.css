@@ -26,6 +26,39 @@ body {
   padding: 5rem 0 3rem;
   background: radial-gradient(circle at top left, rgba(87,213,255,0.18), transparent 34%), linear-gradient(120deg, rgba(111,124,255,0.16), transparent 60%);
 }
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.lang-switcher {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  align-items: center;
+  background: rgba(255,255,255,0.06);
+  padding: 0.35rem 0.6rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.12);
+}
+.lang-btn {
+  border: none;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text);
+  font-weight: 700;
+  padding: 0.65rem 0.9rem;
+  border-radius: 999px;
+  cursor: pointer;
+  min-width: 3.1rem;
+}
+.lang-btn.active {
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: #05101a;
+}
+.lang-block.hidden { display: none; }
 .eyebrow {
   text-transform: uppercase;
   letter-spacing: 0.28em;
