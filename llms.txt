@@ -10,6 +10,20 @@
 - Endpoint: https://api.twj.es/?url=STREAM_URL
 - Response fields: songtitle, artist, song, album, albumArt, streamUrl, youtubeId, now_playing, song_history
 
+## Service behavior (important for integrations)
+- First request for a radio returns "Carregando..." — keep polling, real data arrives within seconds.
+- Enrichment is asynchronous: albumArt and youtubeId may appear one or two polls later; compare songtitle AND enrichment fields to detect updates.
+- ICY is law: artist/song are always what the radio broadcast — enrichment never renames the track.
+- Responses have a 5s shared cache and support ETag/If-None-Match; poll every 10 seconds per listener.
+- youtubeId powers a "clip mode" (music video of the current song, synchronized via now_playing.elapsed as the embed start); each song_history item also carries youtubeId for clickable history.
+- Radios with no listeners for 5 minutes stop being monitored and resume automatically on the next request.
+
+## Free players that use this API
+- https://github.com/jailsonsb2/RadioPlayer — full-page player with clip mode and clickable history
+- https://github.com/jailsonsb2/Radioplayer_api — multi-station, 3 layouts
+- https://github.com/jailsonsb2/bottom_radioplayer — bottom-bar component, audio never stops on navigation
+- https://github.com/jailsonsb2/RadioPlayer-ZenoRadio — full-page player for Zeno.FM
+
 ## Notes
 - This repository is for documentation, visibility, and education.
 - The service is consumed through the hosted endpoint rather than through published source code.

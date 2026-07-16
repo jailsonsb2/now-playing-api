@@ -47,6 +47,7 @@ Os campos `artwork` e `stream_url` são URLs diretas, não markdown.
   "artist": "Fernandinho",
   "song": "Nada Além do Sangue",
   "album": "Uma Nova História",
+  "year": "2009",
   "albumArt": "https://.../600x600bb.jpg",
   "streamUrl": "https://music.apple.com/...",
   "youtubeId": "csPaNdL6ndA",
@@ -55,9 +56,20 @@ Os campos `artwork` e `stream_url` são URLs diretas, não markdown.
     "remaining": 137,
     "duration": 261
   },
-  "song_history": []
+  "song_history": [
+    { "song": { "title": "Atos 2 (Ao Vivo)", "artist": "Gabriela Rocha", "youtubeId": "WWrU6LC_4ho" } }
+  ]
 }
 ```
+
+### Comportamento do serviço (leia antes de integrar)
+
+- **Primeira consulta de uma rádio** retorna `"Carregando..."` — a API começa a monitorar o stream naquele momento; continue o polling e os dados reais chegam em segundos.
+- **Enriquecimento assíncrono:** o nome cru da música é publicado na hora; `albumArt` e `youtubeId` podem aparecer um ou dois polls depois. Para detectar atualizações, compare o `songtitle` **e** os campos de enriquecimento.
+- **O ICY é lei:** `artist`/`song` são sempre o que a rádio transmitiu. O enriquecimento adiciona capa, álbum, ano, duração e links — nunca renomeia a faixa.
+- **Cache e ETag:** respostas têm cache compartilhado de 5s e suportam `If-None-Match` (`304` gratuito). Faça polling a cada **10 segundos** por ouvinte.
+- **Modo clipe:** use o `youtubeId` para exibir o clipe da música e `now_playing.elapsed` para abri-lo sincronizado (`&start={elapsed}` no embed). Cada item do `song_history` também traz seu `youtubeId` — histórico clicável.
+- **Rádios sem ouvintes por 5 minutos** deixam de ser monitoradas e voltam automaticamente na próxima consulta.
 
 ### Como usar
 
@@ -128,6 +140,7 @@ Fields like `artwork` and `stream_url` are direct URLs, not markdown.
   "artist": "Fernandinho",
   "song": "Nada Além do Sangue",
   "album": "Uma Nova História",
+  "year": "2009",
   "albumArt": "https://.../600x600bb.jpg",
   "streamUrl": "https://music.apple.com/...",
   "youtubeId": "csPaNdL6ndA",
@@ -136,9 +149,20 @@ Fields like `artwork` and `stream_url` are direct URLs, not markdown.
     "remaining": 137,
     "duration": 261
   },
-  "song_history": []
+  "song_history": [
+    { "song": { "title": "Atos 2 (Ao Vivo)", "artist": "Gabriela Rocha", "youtubeId": "WWrU6LC_4ho" } }
+  ]
 }
 ```
+
+### Service behavior (read before integrating)
+
+- **First request for a radio** returns `"Carregando..."` — the API starts monitoring that stream right then; keep polling and real data arrives within seconds.
+- **Asynchronous enrichment:** the raw song name is published instantly; `albumArt` and `youtubeId` may appear one or two polls later. To detect updates, compare `songtitle` **and** the enrichment fields.
+- **ICY is law:** `artist`/`song` are always what the radio broadcast. Enrichment adds cover, album, year, duration and links — it never renames the track.
+- **Cache and ETag:** responses have a 5s shared cache and support `If-None-Match` (a free `304`). Poll every **10 seconds** per listener.
+- **Clip mode:** use `youtubeId` to show the music video and `now_playing.elapsed` to open it synchronized (`&start={elapsed}` on the embed). Each `song_history` item also carries its own `youtubeId` — clickable history.
+- **Radios with no listeners for 5 minutes** stop being monitored and resume automatically on the next request.
 
 ### Usage
 
@@ -209,6 +233,7 @@ Campos como `artwork` y `stream_url` son URLs directas, no markdown.
   "artist": "Fernandinho",
   "song": "Nada Além do Sangue",
   "album": "Uma Nova História",
+  "year": "2009",
   "albumArt": "https://.../600x600bb.jpg",
   "streamUrl": "https://music.apple.com/...",
   "youtubeId": "csPaNdL6ndA",
@@ -217,9 +242,20 @@ Campos como `artwork` y `stream_url` son URLs directas, no markdown.
     "remaining": 137,
     "duration": 261
   },
-  "song_history": []
+  "song_history": [
+    { "song": { "title": "Atos 2 (Ao Vivo)", "artist": "Gabriela Rocha", "youtubeId": "WWrU6LC_4ho" } }
+  ]
 }
 ```
+
+### Comportamiento del servicio (lee antes de integrar)
+
+- **La primera consulta de una radio** devuelve `"Carregando..."` — la API empieza a monitorear el stream en ese momento; sigue consultando y los datos reales llegan en segundos.
+- **Enriquecimiento asíncrono:** el nombre crudo de la canción se publica al instante; `albumArt` y `youtubeId` pueden aparecer uno o dos sondeos después. Para detectar actualizaciones, compara `songtitle` **y** los campos de enriquecimiento.
+- **El ICY es ley:** `artist`/`song` son siempre lo que la radio transmitió. El enriquecimiento añade portada, álbum, año, duración y enlaces — nunca renombra la pista.
+- **Caché y ETag:** las respuestas tienen caché compartida de 5s y soportan `If-None-Match` (`304` gratuito). Consulta cada **10 segundos** por oyente.
+- **Modo clip:** usa `youtubeId` para mostrar el vídeo musical y `now_playing.elapsed` para abrirlo sincronizado (`&start={elapsed}` en el embed). Cada elemento de `song_history` también trae su `youtubeId` — historial clicable.
+- **Las radios sin oyentes durante 5 minutos** dejan de monitorearse y vuelven automáticamente en la siguiente consulta.
 
 ### Cómo usar
 
@@ -253,6 +289,15 @@ Panel público:
 A landing page oficial está em português, inglês e espanhol:
 
 - [docs/index.html](docs/index.html)
+
+## Players gratuitos que já usam esta API / Free players using this API
+
+| Player | Estilo / Style |
+|---|---|
+| [**RadioPlayer**](https://github.com/jailsonsb2/RadioPlayer) | Player de página cheia com modo clipe e histórico clicável |
+| [**Radioplayer_api**](https://github.com/jailsonsb2/Radioplayer_api) | Multi-estação com 3 layouts prontos |
+| [**bottom_radioplayer**](https://github.com/jailsonsb2/bottom_radioplayer) | Componente de rodapé — o áudio não para ao navegar |
+| [**RadioPlayer-ZenoRadio**](https://github.com/jailsonsb2/RadioPlayer-ZenoRadio) | Player de página cheia para streams Zeno.FM |
 
 ## Nota importante
 
