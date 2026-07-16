@@ -51,73 +51,185 @@
     <header class="hero">
       <div class="container">
         <p class="eyebrow">API de metadata • endpoint hospedado • docs públicas</p>
+        <div class="lang-switcher">
+          <button type="button" class="lang-btn active" data-lang="pt">PT</button>
+          <button type="button" class="lang-btn" data-lang="en">EN</button>
+          <button type="button" class="lang-btn" data-lang="es">ES</button>
+        </div>
         <h1>Now Playing API</h1>
-        <p class="lead">
-          Consuma metadados em tempo real para rádios web com capa, histórico, contexto visual e busca de faixas — tudo via endpoint público. Sem código da API publicado neste repositório.
-        </p>
+        <div class="lead">
+          <p class="lang-block lang-pt" lang="pt-BR">Consuma metadados em tempo real para rádios web do mundo inteiro, com capa, histórico, contexto visual e busca de faixas — tudo via endpoint público. Sem código da API publicado neste repositório.</p>
+          <p class="lang-block lang-en hidden" lang="en">Consume real-time metadata for web radios worldwide, with cover art, history, visual context and track search — all via a hosted public endpoint. No API implementation code is published in this repository.</p>
+          <p class="lang-block lang-es hidden" lang="es">Consume metadatos en tiempo real para radios web de todo el mundo, con portada, historial, contexto visual y búsqueda de canciones — todo mediante un endpoint público alojado. No hay código de implementación de la API publicado en este repositorio.</p>
+        </div>
         <div class="actions">
-          <a class="btn btn-primary" href="#tester">Testar agora</a>
-          <a class="btn btn-secondary" href="https://api.twj.es/?url=https%3A%2F%2Fstream.zeno.fm%2Fyn65fsaurfhvv">Ver exemplo</a>
+          <a class="btn btn-primary" href="#tester"><span class="lang-block lang-pt">Testar agora</span><span class="lang-block lang-en hidden">Test now</span><span class="lang-block lang-es hidden">Probar ahora</span></a>
+          <a class="btn btn-secondary" href="https://api.twj.es/?url=https%3A%2F%2Fstream.zeno.fm%2Fyn65fsaurfhvv"><span class="lang-block lang-pt">Ver exemplo</span><span class="lang-block lang-en hidden">View example</span><span class="lang-block lang-es hidden">Ver ejemplo</span></a>
         </div>
       </div>
     </header>
 
     <main class="container">
       <section class="card" id="overview">
-        <h2 class="section-title">O que a API entrega</h2>
-        <div class="grid">
-          <article>
-            <h3>Now playing</h3>
-            <p>Receba a música atual com artista, álbum, capa, duração e identificador de vídeo.</p>
-          </article>
-          <article>
-            <h3>Histórico</h3>
-            <p>Mostre as últimas faixas tocadas no player ou painel, com dados consistentes.</p>
-          </article>
-          <article>
-            <h3>Busca de contexto</h3>
-            <p>Busque capa e álbum por artista e título usando `search.php`.</p>
-          </article>
+        <div class="lang-block lang-pt" lang="pt-BR">
+          <h2 class="section-title">O que a API entrega</h2>
+          <div class="grid">
+            <article>
+              <h3>Now playing</h3>
+              <p>Receba a música atual com artista, álbum, capa, duração e identificador de vídeo.</p>
+            </article>
+            <article>
+              <h3>Histórico</h3>
+              <p>Mostre as últimas faixas tocadas no player ou painel, com dados consistentes.</p>
+            </article>
+            <article>
+              <h3>Busca de contexto</h3>
+              <p>Busque capa e álbum por artista e título usando <code>search.php</code>.</p>
+            </article>
+          </div>
+        </div>
+        <div class="lang-block lang-en hidden" lang="en">
+          <h2 class="section-title">What the API delivers</h2>
+          <div class="grid">
+            <article>
+              <h3>Now playing</h3>
+              <p>Receive the current song with artist, album, cover art, duration and video identifier.</p>
+            </article>
+            <article>
+              <h3>History</h3>
+              <p>Show the latest played tracks in your player or panel with consistent data.</p>
+            </article>
+            <article>
+              <h3>Context search</h3>
+              <p>Search for cover art and album using <code>search.php</code> with artist and title.</p>
+            </article>
+          </div>
+        </div>
+        <div class="lang-block lang-es hidden" lang="es">
+          <h2 class="section-title">Qué entrega la API</h2>
+          <div class="grid">
+            <article>
+              <h3>Now playing</h3>
+              <p>Recibe la canción actual con artista, álbum, portada, duración e identificador de vídeo.</p>
+            </article>
+            <article>
+              <h3>Historial</h3>
+              <p>Muestra las últimas canciones reproducidas en tu reproductor o panel con datos consistentes.</p>
+            </article>
+            <article>
+              <h3>Búsqueda de contexto</h3>
+              <p>Busca portada y álbum por artista y título usando <code>search.php</code>.</p>
+            </article>
+          </div>
         </div>
       </section>
 
       <section class="card" id="endpoints">
-        <h2 class="section-title">Endpoints públicos</h2>
-        <div class="endpoint-grid">
-          <div>
-            <h3>Metadata em tempo real</h3>
-            <pre><code>GET https://api.twj.es/?url=https://stream.zeno.fm/yn65fsaurfhvv</code></pre>
-            <p>Retorna o estado da faixa atualmente em reprodução.</p>
+        <div class="lang-block lang-pt" lang="pt-BR">
+          <h2 class="section-title">Endpoints públicos</h2>
+          <div class="endpoint-grid">
+            <div>
+              <h3>Metadata em tempo real</h3>
+              <pre><code>GET https://api.twj.es/?url=https://stream.zeno.fm/yn65fsaurfhvv</code></pre>
+              <p>Retorna o estado da faixa atualmente em reprodução.</p>
+            </div>
+            <div>
+              <h3>Busca de capa e contexto</h3>
+              <pre><code>GET https://api.twj.es/search.php?query=Ministério%20Vineyard%20-%20Tu%20És%20Bom</code></pre>
+              <p>Use o parâmetro <code>query</code> com artista e título para obter capa, álbum e correspondências relevantes.</p>
+            </div>
           </div>
-          <div>
-            <h3>Busca de capa e contexto</h3>
-            <pre><code>GET https://api.twj.es/search.php?query=Ministério%20Vineyard%20-%20Tu%20És%20Bom</code></pre>
-            <p>Use o parâmetro <code>query</code> com artista e título para obter capa, álbum e correspondências relevantes.</p>
-          </div>
+          <p class="note">O retorno inclui <code>results</code> como correspondência principal e <code>other_matches</code> como alternativas. Campos como <code>artwork</code> e <code>stream_url</code> são URLs diretas.</p>
+          <p>Dashboard público para observabilidade: <a href="https://twj.es/dashboard" target="_blank" rel="noopener">https://twj.es/dashboard</a></p>
         </div>
-        <p class="note">O retorno inclui <code>results</code> como correspondência principal e <code>other_matches</code> como alternativas. Campos como <code>artwork</code> e <code>stream_url</code> são URLs diretas.</p>
-        <p>Dashboard público para observabilidade: <a href="https://twj.es/dashboard" target="_blank" rel="noopener">https://twj.es/dashboard</a></p>
+        <div class="lang-block lang-en hidden" lang="en">
+          <h2 class="section-title">Public endpoints</h2>
+          <div class="endpoint-grid">
+            <div>
+              <h3>Real-time metadata</h3>
+              <pre><code>GET https://api.twj.es/?url=https://stream.zeno.fm/yn65fsaurfhvv</code></pre>
+              <p>Returns the current playing track state.</p>
+            </div>
+            <div>
+              <h3>Cover and context search</h3>
+              <pre><code>GET https://api.twj.es/search.php?query=Ministério%20Vineyard%20-%20Tu%20És%20Bom</code></pre>
+              <p>Use the <code>query</code> parameter with artist and title to get cover, album and relevant matches.</p>
+            </div>
+          </div>
+          <p class="note">The response includes <code>results</code> as the main match and <code>other_matches</code> as alternatives. Fields such as <code>artwork</code> and <code>stream_url</code> are direct URLs.</p>
+          <p>Public observability dashboard: <a href="https://twj.es/dashboard" target="_blank" rel="noopener">https://twj.es/dashboard</a></p>
+        </div>
+        <div class="lang-block lang-es hidden" lang="es">
+          <h2 class="section-title">Endpoints públicos</h2>
+          <div class="endpoint-grid">
+            <div>
+              <h3>Metadatos en tiempo real</h3>
+              <pre><code>GET https://api.twj.es/?url=https://stream.zeno.fm/yn65fsaurfhvv</code></pre>
+              <p>Devuelve el estado de la pista que se está reproduciendo actualmente.</p>
+            </div>
+            <div>
+              <h3>Búsqueda de portada y contexto</h3>
+              <pre><code>GET https://api.twj.es/search.php?query=Ministério%20Vineyard%20-%20Tu%20És%20Bom</code></pre>
+              <p>Usa el parámetro <code>query</code> con artista y título para obtener portada, álbum y coincidencias relevantes.</p>
+            </div>
+          </div>
+          <p class="note">La respuesta incluye <code>results</code> como coincidencia principal y <code>other_matches</code> como alternativas. Campos como <code>artwork</code> y <code>stream_url</code> son URLs directas.</p>
+          <p>Panel público de observabilidad: <a href="https://twj.es/dashboard" target="_blank" rel="noopener">https://twj.es/dashboard</a></p>
+        </div>
       </section>
 
       <section class="card" id="integration">
-        <h2 class="section-title">Como usar</h2>
-        <div class="grid">
-          <article>
-            <h3>Exemplo Shell</h3>
-            <pre><code>curl "https://api.twj.es/?url=https://stream.zeno.fm/yn65fsaurfhvv"</code></pre>
-          </article>
-          <article>
-            <h3>Exemplo JavaScript</h3>
-            <pre><code>const response = await fetch('https://api.twj.es/?url=' + encodeURIComponent(streamUrl));
+        <div class="lang-block lang-pt" lang="pt-BR">
+          <h2 class="section-title">Como usar</h2>
+          <div class="grid">
+            <article>
+              <h3>Exemplo Shell</h3>
+              <pre><code>curl "https://api.twj.es/?url=https://stream.zeno.fm/yn65fsaurfhvv"</code></pre>
+            </article>
+            <article>
+              <h3>Exemplo JavaScript</h3>
+              <pre><code>const response = await fetch('https://api.twj.es/?url=' + encodeURIComponent(streamUrl));
 const payload = await response.json();
 console.log(payload);</code></pre>
-          </article>
+            </article>
+          </div>
+        </div>
+        <div class="lang-block lang-en hidden" lang="en">
+          <h2 class="section-title">How to use</h2>
+          <div class="grid">
+            <article>
+              <h3>Shell example</h3>
+              <pre><code>curl "https://api.twj.es/?url=https://stream.zeno.fm/yn65fsaurfhvv"</code></pre>
+            </article>
+            <article>
+              <h3>JavaScript example</h3>
+              <pre><code>const response = await fetch('https://api.twj.es/?url=' + encodeURIComponent(streamUrl));
+const payload = await response.json();
+console.log(payload);</code></pre>
+            </article>
+          </div>
+        </div>
+        <div class="lang-block lang-es hidden" lang="es">
+          <h2 class="section-title">Cómo usar</h2>
+          <div class="grid">
+            <article>
+              <h3>Ejemplo Shell</h3>
+              <pre><code>curl "https://api.twj.es/?url=https://stream.zeno.fm/yn65fsaurfhvv"</code></pre>
+            </article>
+            <article>
+              <h3>Ejemplo JavaScript</h3>
+              <pre><code>const response = await fetch('https://api.twj.es/?url=' + encodeURIComponent(streamUrl));
+const payload = await response.json();
+console.log(payload);</code></pre>
+            </article>
+          </div>
         </div>
       </section>
 
       <section class="card" id="response">
-        <h2 class="section-title">Exemplo de resposta</h2>
-        <pre><code>{
+        <div class="lang-block lang-pt" lang="pt-BR">
+          <h2 class="section-title">Exemplo de resposta</h2>
+          <pre><code>{
   "songtitle": "Fernandinho - Nada Além do Sangue",
   "artist": "Fernandinho",
   "song": "Nada Além do Sangue",
@@ -128,23 +240,66 @@ console.log(payload);</code></pre>
   "now_playing": { "elapsed": 124, "remaining": 137, "duration": 261 },
   "song_history": []
 }</code></pre>
+        </div>
+        <div class="lang-block lang-en hidden" lang="en">
+          <h2 class="section-title">Response example</h2>
+          <pre><code>{
+  "songtitle": "Fernandinho - Nada Além do Sangue",
+  "artist": "Fernandinho",
+  "song": "Nada Além do Sangue",
+  "album": "Uma Nova História",
+  "albumArt": "https://.../600x600bb.jpg",
+  "streamUrl": "https://music.apple.com/...",
+  "youtubeId": "csPaNdL6ndA",
+  "now_playing": { "elapsed": 124, "remaining": 137, "duration": 261 },
+  "song_history": []
+}</code></pre>
+        </div>
+        <div class="lang-block lang-es hidden" lang="es">
+          <h2 class="section-title">Ejemplo de respuesta</h2>
+          <pre><code>{
+  "songtitle": "Fernandinho - Nada Além do Sangue",
+  "artist": "Fernandinho",
+  "song": "Nada Além do Sangue",
+  "album": "Uma Nova História",
+  "albumArt": "https://.../600x600bb.jpg",
+  "streamUrl": "https://music.apple.com/...",
+  "youtubeId": "csPaNdL6ndA",
+  "now_playing": { "elapsed": 124, "remaining": 137, "duration": 261 },
+  "song_history": []
+}</code></pre>
+        </div>
       </section>
 
       <section class="card" id="tester">
-        <h2 class="section-title">Testador ao vivo</h2>
-        <p>Teste diretamente no navegador com qualquer stream de rádio.</p>
+        <div class="lang-block lang-pt" lang="pt-BR">
+          <h2 class="section-title">Testador ao vivo</h2>
+          <p>Teste diretamente no navegador com qualquer stream de rádio.</p>
+        </div>
+        <div class="lang-block lang-en hidden" lang="en">
+          <h2 class="section-title">Live tester</h2>
+          <p>Test directly in the browser with any radio stream.</p>
+        </div>
+        <div class="lang-block lang-es hidden" lang="es">
+          <h2 class="section-title">Probador en vivo</h2>
+          <p>Prueba directamente en el navegador con cualquier stream de radio.</p>
+        </div>
         <form id="tester-form">
           <label>
-            URL base da API
+            <span class="lang-block lang-pt">URL base da API</span>
+            <span class="lang-block lang-en hidden">API base URL</span>
+            <span class="lang-block lang-es hidden">URL base de la API</span>
             <input id="api-base-url" type="url" value="https://api.twj.es" placeholder="https://api.twj.es" />
           </label>
           <label>
-            URL do stream
+            <span class="lang-block lang-pt">URL do stream</span>
+            <span class="lang-block lang-en hidden">Stream URL</span>
+            <span class="lang-block lang-es hidden">URL del stream</span>
             <input id="stream-url" type="url" placeholder="https://stream.example.com/radio" />
           </label>
           <div class="actions compact">
-            <button class="btn btn-primary" type="submit">Executar</button>
-            <button class="btn btn-secondary" type="button" id="copy-json">Copiar JSON</button>
+            <button class="btn btn-primary" type="submit"><span class="lang-block lang-pt">Executar</span><span class="lang-block lang-en hidden">Run</span><span class="lang-block lang-es hidden">Ejecutar</span></button>
+            <button class="btn btn-secondary" type="button" id="copy-json"><span class="lang-block lang-pt">Copiar JSON</span><span class="lang-block lang-en hidden">Copy JSON</span><span class="lang-block lang-es hidden">Copiar JSON</span></button>
           </div>
         </form>
         <div id="status" class="status">Aguardando request…</div>

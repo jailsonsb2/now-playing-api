@@ -4,6 +4,26 @@ const streamUrlInput = document.getElementById('stream-url');
 const output = document.getElementById('response-output');
 const status = document.getElementById('status');
 const copyButton = document.getElementById('copy-json');
+const langButtons = document.querySelectorAll('.lang-btn');
+const langBlocks = document.querySelectorAll('.lang-block');
+
+function setLanguage(lang) {
+  langButtons.forEach((button) => {
+    button.classList.toggle('active', button.dataset.lang === lang);
+  });
+  langBlocks.forEach((block) => {
+    block.classList.toggle('hidden', !block.classList.contains(`lang-${lang}`));
+  });
+  document.documentElement.lang = lang === 'pt' ? 'pt-BR' : lang;
+  localStorage.setItem('nowPlayingDocsLang', lang);
+}
+
+const savedLang = localStorage.getItem('nowPlayingDocsLang') || 'pt';
+setLanguage(savedLang);
+
+langButtons.forEach((button) => {
+  button.addEventListener('click', () => setLanguage(button.dataset.lang));
+});
 
 form.addEventListener('submit', async (event) => {
   event.preventDefault();

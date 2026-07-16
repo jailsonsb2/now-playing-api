@@ -1,6 +1,6 @@
 # Now Playing API
 
-API de metadata hospedada para rádios web, com consumo via endpoint público e documentação voltada para integração rápida em players, painéis e aplicações.
+API de metadata hospedada para rádios web do mundo inteiro, com consumo via endpoint público e documentação voltada para integração rápida em players, painéis e aplicações.
 
 ## Visão geral
 
@@ -98,7 +98,7 @@ Use-o para verificar o estado do serviço, testar endpoints e acompanhar métric
 
 ## Documentação pública
 
-A landing page oficial está em:
+A landing page oficial está em português, inglês e espanhol:
 
 - [docs/index.html](docs/index.html)
 
